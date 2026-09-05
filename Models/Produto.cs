@@ -40,7 +40,7 @@ class Produto
             Quantidade -= quantidade;
             return $"{quantidade} unidades foram removidas do estoque!";
         }
-        else if(quantidade < 0)
+        else if(quantidade <= 0)
         {
             return "A quantidade a ser removida deve ser maior que zero!";
         }
