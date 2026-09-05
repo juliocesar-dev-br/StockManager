@@ -21,4 +21,34 @@ class Produto
         return $"Id: {Id} | Nome: {Nome} | Preço: {Preco} | Quantidade: {Quantidade} | Categoria: {Categoria}";
     }
 
+    public string AdicionarQuantidade(int quantidade)
+    {
+        if(quantidade > 0)
+        {
+            Quantidade += quantidade;
+            return $"{quantidade} unidades foram adicionadas no estoque!";
+        }
+     
+            return "A quantidade a ser adicionada deve ser maior que zero!";
+        
+    }
+
+    public string RemoverQuantidade(int quantidade)
+    {
+        if(quantidade > 0 && quantidade <= Quantidade)
+        {
+            Quantidade -= quantidade;
+            return $"{quantidade} unidades foram removidas do estoque!";
+        }
+        else if(quantidade < 0)
+        {
+            return "A quantidade a ser removida deve ser maior que zero!";
+        }
+        else
+        {
+            return "A quantidade solicitada para retirada deve ser menor ou igual a quantidade no estoque!";
+        }
+        
+    }
+
 }
