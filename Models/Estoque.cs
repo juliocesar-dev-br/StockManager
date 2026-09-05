@@ -15,7 +15,20 @@ class Estoque
         
         produtos.Add(produto);
         return "Produto cadastrado com sucesso!";
+    }
 
-
+    public void ListarProdutos()
+    {
+        if(produtos.Count > 0)
+        {
+            foreach(Produto produto in produtos)
+            {
+                System.Console.WriteLine(produto);
+            }
+        }
+       
+        System.Console.WriteLine("Não há produtos cadastrados no estoque");
+        return;
+        
     }
 }
