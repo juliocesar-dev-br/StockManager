@@ -56,10 +56,11 @@ class Estoque
         if(produto != null)
         {
             produtos.Remove(produto);
-            Console.WriteLine($"Produto.id: {id} <- removido com sucesso");
+            Console.WriteLine($"Produto: {produto.Nome} -> removido com sucesso");
+            return;
         }
 
-        Console.WriteLine($"Produto com o id {id} não foi encontrado!");  
+        Console.WriteLine($"ID: {id} não foi encontrado!");  
     }
 
 }
