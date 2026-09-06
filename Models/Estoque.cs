@@ -26,8 +26,11 @@ class Estoque
                 System.Console.WriteLine(produto);
             }
         }
+        else
+        {
+            System.Console.WriteLine("Não há produtos cadastrados no estoque");
+        }
        
-        System.Console.WriteLine("Não há produtos cadastrados no estoque");
         return;
         
     }
@@ -44,4 +47,19 @@ class Estoque
 
         return null;
     }
+
+    public void RemoverProdutoPorId(int id)
+    {
+       
+        Produto? produto = BuscarProdutoPorId(id);
+
+        if(produto != null)
+        {
+            produtos.Remove(produto);
+            Console.WriteLine($"Produto.id: {id} <- removido com sucesso");
+        }
+
+        Console.WriteLine($"Produto com o id {id} não foi encontrado!");  
+    }
+
 }

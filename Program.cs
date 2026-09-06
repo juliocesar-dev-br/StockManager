@@ -31,8 +31,8 @@ estoqueVazio.ListarProdutos();
 
 System.Console.WriteLine("----------------------------------------");
 
-Produto produto4 = estoque.BuscarProdutoPorId(2);
-Produto produto5 = estoque.BuscarProdutoPorId(99);
+Produto? produto4 = estoque.BuscarProdutoPorId(2);
+Produto? produto5 = estoque.BuscarProdutoPorId(99);
 
 if(produto4 != null)
 {
@@ -52,3 +52,14 @@ else
     System.Console.WriteLine("Produto não encontrado!");
 }
 
+System.Console.WriteLine("-----------------------------------------------------------------");
+
+estoque.ListarProdutos();
+
+estoque.RemoverProdutoPorId(2);
+
+estoque.ListarProdutos();
+
+estoque.RemoverProdutoPorId(99);
+
+estoque.ListarProdutos();
