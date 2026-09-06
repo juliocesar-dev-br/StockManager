@@ -1,5 +1,6 @@
 ﻿
 using System.Linq.Expressions;
+using System.Net.NetworkInformation;
 using System.Runtime.Serialization;
 
 bool sair = false;
@@ -20,36 +21,94 @@ while(!sair)
     System.Console.WriteLine("------------------------------------------------------------------------------------------");
 
     System.Console.Write("Digite a opção: ");
-    string opcao = Console.ReadLine();
+    string opcao = Console.ReadLine() ?? string.Empty;
 
     switch(opcao)
     {
         case "1":
             System.Console.Write("Id: ");
-            int id = int.Parse(Console.ReadLine());
+            bool conversaoIdPrincipal = int.TryParse(Console.ReadLine(), out int idPrincipal);
 
+            if(!conversaoIdPrincipal)
+            {
+                System.Console.WriteLine("Dado inserido no ID e inválido!");
+                break;
+            }
+
+            if(idPrincipal <= 0)
+            {
+                System.Console.WriteLine("Id não pode ser menor ou igual a zero!");
+                break;
+            }
+          
             System.Console.Write("Nome: ");
-            string nome = Console.ReadLine();
+            string nome = Console.ReadLine() ?? string.Empty;
+
+            if(string.IsNullOrWhiteSpace(nome))
+            {
+                System.Console.WriteLine("O nome do produto não pode ficar vazio!");
+                break;
+            }
+
+            nome = nome.Trim();
 
             System.Console.Write("Preço: ");
-            decimal preco = decimal.Parse(Console.ReadLine());
+            bool conversaoPreco = decimal.TryParse(Console.ReadLine(), out decimal preco);
+
+            if(!conversaoPreco)
+            {
+                System.Console.WriteLine("Dado inserido no preço e inválido!");
+                break;
+            }
+
+            if(preco <= 0)
+            {
+                System.Console.WriteLine("O preço do produto não poder ser menor ou igual a zero!");
+                break;
+            }
 
             System.Console.Write("Quantidade: ");
-            int qtd = int.Parse(Console.ReadLine());
+            bool conversaoQtd = int.TryParse(Console.ReadLine(), out int qtd);
+
+            if(!conversaoQtd)
+            {
+                System.Console.WriteLine("Dado inserido na quantidade e inválido");
+                break;
+            }
+
+            if(qtd < 0)
+            {
+                System.Console.WriteLine("A quantidade não pode ser menor ou igual a 0");
+                break;
+            }
 
             System.Console.Write("Categoria: ");
-            string categoria = Console.ReadLine();
+            string categoria = Console.ReadLine() ?? string.Empty;
 
-            Produto produto = new Produto(id, nome, preco, qtd, categoria);
+            if(string.IsNullOrWhiteSpace(categoria))
+            {
+                System.Console.WriteLine("A categoria do produto não pode ficar vazio!");
+                break;
+            }
 
-            estoque.CadastrarProduto(produto);
+            categoria = categoria.Trim();
+
+            Produto produto = new Produto(idPrincipal, nome, preco, qtd, categoria);
+
+            Console.WriteLine(estoque.CadastrarProduto(produto));
             break;
         case "2":
             estoque.ListarProdutos();
             break;
         case "3":
             System.Console.Write("Digite o id do produto que você deseja procurar: ");
-            int id1 = int.Parse(Console.ReadLine());
+            bool conversaoId = int.TryParse(Console.ReadLine(), out int id1);
+
+            if(!conversaoId)
+            {
+                System.Console.WriteLine("ID inválido. Digite um número inteiro");
+                break;
+            }
 
             Produto? produto2 = estoque.BuscarProdutoPorId(id1);
 
@@ -67,7 +126,13 @@ while(!sair)
         case "4": 
 
             System.Console.Write("Digite o id do produto que você deseja remover: ");
-            int id2 = int.Parse(Console.ReadLine());
+            bool conversaoId2 = int.TryParse(Console.ReadLine(), out int id2);
+
+            if(!conversaoId2)
+            {
+                System.Console.WriteLine("ID inválido. Digite um número inteiro");
+                break;
+            }
 
             estoque.RemoverProdutoPorId(id2);
             break;
