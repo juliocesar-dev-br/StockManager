@@ -17,7 +17,9 @@ while(!sair)
     System.Console.WriteLine("2 - Listar");
     System.Console.WriteLine("3 - Buscar");
     System.Console.WriteLine("4 - Remover");
-    System.Console.WriteLine("5 - Sair");
+    System.Console.WriteLine("5 - Adicionar quantidade");
+    System.Console.WriteLine("6 - Remover quantidade");
+    System.Console.WriteLine("7 - Sair");
     System.Console.WriteLine("------------------------------------------------------------------------------------------");
 
     System.Console.Write("Digite a opção: ");
@@ -137,6 +139,94 @@ while(!sair)
             estoque.RemoverProdutoPorId(id2);
             break;
         case "5":
+            estoque.ListarProdutos();
+            System.Console.WriteLine("------------------------------------------------------------------------------------");
+
+            System.Console.Write("Digite o id do produto que você deseja aumentar a quantidade(Id): ");
+            bool entradaId = int.TryParse(Console.ReadLine(), out int saidaId);
+
+            if(!entradaId)
+            {
+                System.Console.WriteLine("Dado inserido no id é inválido!");
+                break;
+            }
+
+            if(saidaId <= 0)
+            {
+                System.Console.WriteLine("O Id não pode ser menor ou igual a zero");
+                break;
+            }
+
+            Produto? produtoBuscado = estoque.BuscarProdutoPorId(saidaId);
+
+            if(produtoBuscado != null)
+            {
+                System.Console.Write("Digite a quantidade que deseja adicionar no produto: ");
+                bool conversaoQtd2 = int.TryParse(Console.ReadLine(), out int qtd2);
+
+                if(!conversaoQtd2)
+                {
+                    System.Console.WriteLine("Dado inválido inserido na quantidade a ser adicionada!");
+                    break;
+                }
+
+                if(qtd2 <= 0)
+                {
+                    System.Console.WriteLine("A quantidade não pode ser menor ou igual a zero!");
+                    break;
+                }
+
+                Console.WriteLine(produtoBuscado.AdicionarQuantidade(qtd2));
+                break;
+            }
+           
+            System.Console.WriteLine("Produto não encontrado!");
+            break;
+        case "6":
+            estoque.ListarProdutos();
+            System.Console.WriteLine("------------------------------------------------------------------------------------");
+
+            System.Console.Write("Digite o id do produto que você deseja remover determinada quantidade(Id): ");
+            bool entradaIdRemocao = int.TryParse(Console.ReadLine(), out int saidaIdRemocao);
+
+            if(!entradaIdRemocao)
+            {
+                System.Console.WriteLine("Dado inserido no id é inválido!");
+                break;
+            }
+
+            if(saidaIdRemocao <= 0)
+            {
+                System.Console.WriteLine("O Id não pode ser menor ou igual a zero");
+                break;
+            }
+
+            Produto? produtoBuscado1 = estoque.BuscarProdutoPorId(saidaIdRemocao);
+
+            if(produtoBuscado1 != null)
+            {
+                System.Console.Write("Digite a quantidade que deseja remover no produto: ");
+                bool conversaoQtd2 = int.TryParse(Console.ReadLine(), out int qtd2);
+
+                if(!conversaoQtd2)
+                {
+                    System.Console.WriteLine("Dado inválido inserido na quantidade a ser removida!");
+                    break;
+                }
+
+                if(qtd2 <= 0)
+                {
+                    System.Console.WriteLine("A quantidade não pode ser menor ou igual a zero!");
+                    break;
+                }
+
+                Console.WriteLine(produtoBuscado1.RemoverQuantidade(qtd2));
+                break;
+            }
+           
+            System.Console.WriteLine("Produto não encontrado!");
+            break;
+        case "7":
             sair = true;
             break;
         default:
