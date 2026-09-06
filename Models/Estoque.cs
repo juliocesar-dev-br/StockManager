@@ -31,4 +31,17 @@ class Estoque
         return;
         
     }
+
+    public Produto? BuscarProdutoPorId(int id)
+    {
+        foreach(Produto produto in produtos)
+        {
+            if(produto.Id == id)
+            {
+                return produto;
+            }
+        }
+
+        return null;
+    }
 }

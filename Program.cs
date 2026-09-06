@@ -1,5 +1,7 @@
-﻿Estoque estoque = new Estoque();
-Estoque estoque1 = new Estoque();
+﻿
+
+Estoque estoque = new Estoque();
+Estoque estoqueVazio = new Estoque();
 
 Produto produto1 = new Produto(1,"Compressor 1/4 Electrolux 220V", 333.99m, 20, "Peças");
 Produto produto2 = new Produto(1,"Compressor 1/5 Electrolux 220V", 319.99m, 20, "Peças");
@@ -25,5 +27,28 @@ Console.WriteLine(estoque.CadastrarProduto(produto3));
 
 estoque.ListarProdutos();
 System.Console.WriteLine("---------------------------------------");
-estoque1.ListarProdutos();
+estoqueVazio.ListarProdutos();
+
+System.Console.WriteLine("----------------------------------------");
+
+Produto produto4 = estoque.BuscarProdutoPorId(2);
+Produto produto5 = estoque.BuscarProdutoPorId(99);
+
+if(produto4 != null)
+{
+    System.Console.WriteLine(produto4);
+}
+else
+{
+    System.Console.WriteLine("Produto não encontrado!");
+}
+
+if(produto5 != null)
+{
+    System.Console.WriteLine(produto5);
+}
+else
+{
+    System.Console.WriteLine("Produto não encontrado!");
+}
 
