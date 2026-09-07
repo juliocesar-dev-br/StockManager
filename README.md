@@ -1,6 +1,7 @@
-# Stock Manager - Gerenciamento de Estoque
+# StockManager - Gerenciamento de Estoque
 
-Um projeto de console em C# para gerenciar estoques de produtos, permitindo cadastrar produtos e adicionar ou remover suas quantidades.
+Um projeto de console em C# para gerenciar o estoque de produtos, permitindo cadastrar, buscar, listar e remover produtos, além de adicionar ou remover suas quantidades
+por meio de um menu interativo com validações das entradas do usuário.
 
 ## Tecnologias:
 
@@ -10,6 +11,9 @@ Um projeto de console em C# para gerenciar estoques de produtos, permitindo cada
 ## Funcionalidades atuais:
 
 - Cadastro de produtos
+- Remoção de produtos
+- Listagem de produtos
+- Buscar de produtos por Id
 - Adição de quantidades ao estoque
 - Remoção de quantidades do estoque
 
