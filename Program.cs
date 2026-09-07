@@ -6,22 +6,12 @@ using System.Runtime.Serialization;
 bool sair = false;
 Estoque estoque = new Estoque();
 
-System.Console.WriteLine("==============================================================================================");
-System.Console.WriteLine("--------------------------------Gerenciamento de Estoque--------------------------------------");
-System.Console.WriteLine("==============================================================================================");
-
 
 while(!sair)
-{
-    System.Console.WriteLine("1 - Cadastrar");
-    System.Console.WriteLine("2 - Listar");
-    System.Console.WriteLine("3 - Buscar");
-    System.Console.WriteLine("4 - Remover");
-    System.Console.WriteLine("5 - Adicionar quantidade");
-    System.Console.WriteLine("6 - Remover quantidade");
-    System.Console.WriteLine("7 - Sair");
-    System.Console.WriteLine("------------------------------------------------------------------------------------------");
 
+{
+   
+    ExibirMenu();
     System.Console.Write("Digite a opção: ");
     string opcao = Console.ReadLine() ?? string.Empty;
 
@@ -234,6 +224,25 @@ while(!sair)
             break;
 
     }
+}
 
+
+
+void ExibirMenu()
+{
+    
+    System.Console.WriteLine("==============================================================================================");
+    System.Console.WriteLine("--------------------------------Gerenciamento de Estoque--------------------------------------");
+    System.Console.WriteLine("==============================================================================================");
+
+    System.Console.WriteLine("1 - Cadastrar");
+    System.Console.WriteLine("2 - Listar");
+    System.Console.WriteLine("3 - Buscar");
+    System.Console.WriteLine("4 - Remover");
+    System.Console.WriteLine("5 - Adicionar quantidade");
+    System.Console.WriteLine("6 - Remover quantidade");
+    System.Console.WriteLine("7 - Sair");
+    System.Console.WriteLine("------------------------------------------------------------------------------------------");
 
 }
+
